@@ -165,7 +165,7 @@ namespace ControleJogos.Controllers
             return _context.Jogos.Any(e => e.JogoID == id);
         }
 
-        private async Task<string> RealizarUploadImagens(List<IFormFile> files, int idLivro)
+        private async Task<string> RealizarUploadImagens(List<IFormFile> files, int idJogo)
         {
             // Verifica se existem arquivos selecionados
             if (files.Count > 0)
@@ -182,7 +182,7 @@ namespace ControleJogos.Controllers
                     if (file.Length > 0)
                     {
                         // Concatena o nome do arquivo
-                        var nomeArquivo = "livro_" + idLivro +
+                        var nomeArquivo = "jogo_" + idJogo +
                         Path.GetExtension(file.FileName);
                         // Concatena o caminho do arquivo
                         var pathFile = Path.Combine(pathUpload, nomeArquivo);

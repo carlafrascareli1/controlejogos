@@ -21,9 +21,7 @@ namespace ControleJogos.Model
         public int Quantidade { get; set; }
 
         public string Foto { get; set; }
-
-        //public ICollection<LivroAutor> LivroAutor { get; set; }
-
-        //public ICollection<LivroEmprestimo> LivroEmprestimo { get; set; }
+        
+        public ICollection<EmprestimoJogo> EmprestimoJogo { get; set; }
     }
 }

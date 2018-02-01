@@ -11,9 +11,10 @@ using System;
 namespace ControleJogos.Migrations
 {
     [DbContext(typeof(ControleJogosContext))]
-    partial class ControleJogosContextModelSnapshot : ModelSnapshot
+    [Migration("20180201012136_Emprestimo")]
+    partial class Emprestimo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,8 +45,6 @@ namespace ControleJogos.Migrations
                     b.Property<int>("EmprestimoID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AmigoID");
-
                     b.Property<DateTime?>("DataDevolucao");
 
                     b.Property<DateTime>("DataDevolucaoPrevista");
@@ -53,8 +52,6 @@ namespace ControleJogos.Migrations
                     b.Property<DateTime>("DataEmprestimo");
 
                     b.HasKey("EmprestimoID");
-
-                    b.HasIndex("AmigoID");
 
                     b.ToTable("Emprestimo");
                 });
@@ -88,14 +85,6 @@ namespace ControleJogos.Migrations
                     b.HasKey("JogoID");
 
                     b.ToTable("Jogos");
-                });
-
-            modelBuilder.Entity("ControleJogos.Model.Emprestimo", b =>
-                {
-                    b.HasOne("ControleJogos.Model.Amigo", "Amigo")
-                        .WithMany("Emprestimo")
-                        .HasForeignKey("AmigoID")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ControleJogos.Model.EmprestimoJogo", b =>

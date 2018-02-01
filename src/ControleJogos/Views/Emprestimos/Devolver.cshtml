@@ -1,0 +1,47 @@
+﻿@model ControleJogos.Model.Emprestimo
+@{
+    ViewData["Title"] = "Devolver";
+    Layout = null;
+}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Devolver os Jogos</h4>
+        </div>
+        <div class="modal-body">
+            <h4>@Html.DisplayNameFor(model => model.Amigo) : @Html.DisplayFor(model => model.Amigo.Nome)</h4>
+            <p>@Html.DisplayNameFor(model => model.DataEmprestimo) : @Html.DisplayFor(model => model.DataEmprestimo)</p>
+            <p>@Html.DisplayNameFor(model => model.DataDevolucaoPrevista) : @Html.DisplayFor(model => model.DataDevolucaoPrevista)</p>
+            <p>@Html.DisplayNameFor(model => model.DataDevolucao) : @Html.DisplayFor(model => model.DataDevolucao)</p>
+            <p>@Html.DisplayNameFor(model => model.Amigo.Telefone) : @Html.DisplayFor(model => model.Amigo.Telefone)</p>
+            <p>@Html.DisplayNameFor(model => model.Amigo.Email) : @Html.DisplayFor(model => model.Amigo.Email)</p>
+            <p>
+                Jogos:<br />
+                @foreach (var item in Model.EmprestimoJogo)
+                {
+                    @Html.DisplayFor(p => item.Jogo.Titulo)
+                    <br />
+                }
+            </p>
+            <form asp-action="Devolver">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="EmprestimoID" />
+                        <div class="form-group">
+                            <label asp-for="DataDevolucao" class="control-label"></label>
+                            <input asp-for="DataDevolucao" class="form-control" />
+                            <span asp-validation-for="DataDevolucao" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Devolver" class="btn btn-default"  />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

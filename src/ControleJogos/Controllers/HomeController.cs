@@ -1,18 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ControleJogos.Data.Context;
+using ControleJogos.Models;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using ControleJogos.Models;
 
 namespace ControleJogos.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ControleJogosContext _context;
+
+        public HomeController(ControleJogosContext context)
         {
-            return View();
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var controleJogosContext = _context.Emprestimo
+                .Where(p=>!p.DataDevolucao.HasValue)
+                .Include(e => e.Amigo)
+                .OrderByDescending(p=>p.DiasAtraso);
+
+            return View(await controleJogosContext.ToListAsync());
         }
 
         public IActionResult About()

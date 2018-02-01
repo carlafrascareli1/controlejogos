@@ -24,8 +24,6 @@ namespace ControleJogos.Model
         [EmailAddress(ErrorMessage = "O campo {0} está em um formato inválido.")]
         public string Email { get; set; }
 
-        //public virtual ICollection<Emprestimo> Emprestimo { get; set; }
-
-        //public ICollection<SistemaUsuario> SistemaUsuario { get; set; }
+        public virtual ICollection<Emprestimo> Emprestimo { get; set; }
     }
 }

@@ -1,48 +1,46 @@
 ﻿@model IEnumerable<ControleJogos.Model.Jogo>
-
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Lista de jogos</h2>
-
 <p>
     <a asp-action="Create">Adicionar jogo</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Titulo)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Quantidade)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Foto)
-                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titulo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantidade)
-            </td>
-            <td>
-                <img class="card-img-top" src="~/@item.Foto" style="max-height: 180px; max-width: 100px">
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.JogoID">Alterar</a> |
-                <a asp-action="Details" asp-route-id="@item.JogoID">Visualizar</a> |
-                <a asp-action="Delete" asp-route-id="@item.JogoID">Excluir</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantidade)
+                </td>
+                <td>
+                    <img class="card-img-top" src="~/@item.Foto" style="max-height: 180px; max-width: 100px">
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.JogoID" class="btn btn-default details" title="Detalhes"><i class="glyphicon glyphicon-file"></i></a>
+                    <a asp-action="Edit" asp-route-id="@item.JogoID" class="btn btn-default edit" title="Editar"><i class="glyphicon glyphicon-edit"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.JogoID" class="btn btn-danger delete"><i class="glyphicon glyphicon-trash"></i></a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

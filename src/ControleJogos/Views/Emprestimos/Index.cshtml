@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ControleJogos.Model.Emprestimo>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts{
+    <script>
+        $(function () {
+            $(".details").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("Emprestimos/Details?id=" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+        })
+    </script>
+}
+
+<h2>Index</h2>
+<p>
+    <a asp-action="Create">Emprestar jogos</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataEmprestimo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataDevolucaoPrevista)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataDevolucao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amigo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataEmprestimo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataDevolucaoPrevista)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataDevolucao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amigo.Nome)
+                </td>
+                <td>
+                    <a data-id="@item.EmprestimoID" class="btn btn-default details" title="Detalhes"><i class="glyphicon glyphicon-file"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.EmprestimoID" class="btn btn-danger delete"><i class="glyphicon glyphicon-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="modal" id="modal">
+
+</div>

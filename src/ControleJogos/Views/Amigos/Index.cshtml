@@ -38,9 +38,9 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.AmigoID">Alterar</a> |
-                <a asp-action="Details" asp-route-id="@item.AmigoID">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.AmigoID">Excluir</a>
+                <a asp-action="Details" asp-route-id="@item.AmigoID" class="btn btn-default details" title="Detalhes"><i class="glyphicon glyphicon-file"></i></a>
+                <a asp-action="Edit" asp-route-id="@item.AmigoID" class="btn btn-default edit" title="Editar"><i class="glyphicon glyphicon-edit"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.AmigoID" class="btn btn-danger delete"><i class="glyphicon glyphicon-trash"></i></a>
             </td>
         </tr>
 }
