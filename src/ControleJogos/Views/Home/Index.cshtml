@@ -24,13 +24,16 @@
     </script>
 }
 
-<h2>Empréstimos não devolvidos</h2>
+<h2>Jogos emprestados</h2>
 
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Amigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmprestimoJogo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DataEmprestimo)
@@ -51,6 +54,13 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Amigo.Nome)
+                </td>
+                <td>
+                    @foreach (var jogo in item.EmprestimoJogo)
+                    {
+                        @Html.DisplayFor(p => jogo.Jogo.Titulo)
+                        <br />
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DataEmprestimo)

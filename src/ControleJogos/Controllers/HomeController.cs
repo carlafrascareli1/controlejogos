@@ -20,9 +20,10 @@ namespace ControleJogos.Controllers
         public async Task<IActionResult> Index()
         {
             var controleJogosContext = _context.Emprestimo
-                .Where(p=>!p.DataDevolucao.HasValue)
+                .Include(i => i.EmprestimoJogo)
+                .ThenInclude(le => le.Jogo)
                 .Include(e => e.Amigo)
-                .OrderByDescending(p=>p.DiasAtraso);
+                .Where(p => !p.DataDevolucao.HasValue);
 
             return View(await controleJogosContext.ToListAsync());
         }

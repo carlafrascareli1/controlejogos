@@ -35,6 +35,7 @@ namespace ControleJogos.Model
 
         public Amigo Amigo { get; set; }
 
+        [Display(Name = "Jogos emprestados")]
         public ICollection<EmprestimoJogo> EmprestimoJogo { get; set; }
     }
 }

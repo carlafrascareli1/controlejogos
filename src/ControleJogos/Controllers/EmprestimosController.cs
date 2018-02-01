@@ -14,7 +14,7 @@ namespace ControleJogos.Controllers
     public class EmprestimosController : Controller
     {
         private readonly ControleJogosContext _context;
-        
+
         public EmprestimosController(ControleJogosContext context)
         {
             _context = context;
@@ -37,8 +37,8 @@ namespace ControleJogos.Controllers
 
             var emprestimo = await _context.Emprestimo
                 .Include(e => e.Amigo)
-                .Include(e=>e.EmprestimoJogo)
-                .ThenInclude(le=>le.Jogo)
+                .Include(e => e.EmprestimoJogo)
+                .ThenInclude(le => le.Jogo)
                 .SingleOrDefaultAsync(m => m.EmprestimoID == id);
 
             if (emprestimo == null)
@@ -129,7 +129,7 @@ namespace ControleJogos.Controllers
 
             return View(emprestimo);
         }
-        
+
 
         // GET: Emprestimos/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -156,7 +156,7 @@ namespace ControleJogos.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var emprestimo = await _context.Emprestimo
-                .Include(e=>e.EmprestimoJogo)
+                .Include(e => e.EmprestimoJogo)
                 .SingleOrDefaultAsync(m => m.EmprestimoID == id);
 
             _context.EmprestimoJogo.RemoveRange(emprestimo.EmprestimoJogo);
