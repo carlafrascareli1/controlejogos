@@ -11,9 +11,10 @@ using System;
 namespace ControleJogos.Migrations
 {
     [DbContext(typeof(ControleJogosContext))]
-    partial class ControleJogosContextModelSnapshot : ModelSnapshot
+    [Migration("20180202013235_Usuario")]
+    partial class Usuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

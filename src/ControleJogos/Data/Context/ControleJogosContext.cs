@@ -1,4 +1,5 @@
 ﻿using ControleJogos.Model;
+using ControleJogos.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,12 +10,11 @@ using System.Threading.Tasks;
 
 namespace ControleJogos.Data.Context
 {
-    public class ControleJogosContext : DbContext
+    public class ControleJogosContext : IdentityDbContext<ApplicationUser>
     {
-        public ControleJogosContext(DbContextOptions options)
-            :base (options)
+        public ControleJogosContext(DbContextOptions<ControleJogosContext> options)
+            : base(options)
         {
-            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

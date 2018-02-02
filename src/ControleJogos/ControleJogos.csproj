@@ -4,10 +4,15 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20180201232825_CreateIdentitySchema.Designer.cs" />
+  </ItemGroup>
+
  
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
     <PackageReference Include="Migrations" Version="1.0.1" />
@@ -23,7 +28,6 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Views\Shared\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
